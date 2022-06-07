@@ -7,7 +7,8 @@ from .serializers import *
 
 class PostView(APIView):
     permission_classes = (AllowAny,)
-    def get(self, request, format=None):
+    
+    def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
